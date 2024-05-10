@@ -97,7 +97,7 @@ rm /tmp/asound.conf
 # Direwolf
 mkdir -p $HOME/DIREWOLF
 cat <<EOF > $HOME/DIREWOLF/direwolf.conf
-MYCALL $CALLSIGN
+MYCALL $CALLSIGN-$SSID
 ADEVICE digirig-rx digirig-tx
 TXDELAY 50
 PTT /dev/digirig RTS
@@ -106,7 +106,7 @@ EOF
 cat <<EOF > $HOME/DIREWOLF/start-direwolf.sh
 amixer -c 5 sset "Auto Gain Control" mute
 mkdir -p $HOME/DIREWOLF/logs
-direwolf -c $HOME/DIREWOLF/direwolf.conf -p -t 0 | tee $HOME/DIREWOLF/logs/direwolf.log
+direwolf -c $HOME/DIREWOLF/direwolf.conf -t 0 | tee $HOME/DIREWOLF/logs/direwolf.log
 EOF
 chmod +x $HOME/DIREWOLF/start-direwolf.sh
 
@@ -129,7 +129,7 @@ cat <<EOF > $HOME/LINBPQ/bpq32.cfg
 SIMPLE ; This sets many parameters to reasonable defaults
 
 LOCATOR=$LOCATOR ; Set to your Grid Square to send reports to the BPQ32 Node Map system
-NODECALL=$CALLSIGN
+NODECALL=$CALLSIGN-$SSID
 
 INFOMSG:
 $CALLSIGN's RMS Gateway
@@ -160,8 +160,6 @@ PORT
  CHANNEL=A
  IPADDR=127.0.0.1
  TCPPORT=8001
- ;COMPORT=/tmp/kisstnc
- ;SPEED=9600
  MAXFRAME=4
  FRACK=8000
  RESPTIME=1500
@@ -251,6 +249,7 @@ echo "00 02 * * * $USER $HOME/LINBPQ/log-cleanup.sh" | sudo tee /etc/crontab
 cat <<EOF > /tmp/torrc
 HiddenServiceDir /var/lib/tor/hidden_service/
 HiddenServicePort 22 127.0.0.1:22
+HiddenServicePort 80 127.0.0.1:8073
 EOF
 sudo cp /tmp/torrc /etc/tor/torrc
 rm /tmp/torrc
