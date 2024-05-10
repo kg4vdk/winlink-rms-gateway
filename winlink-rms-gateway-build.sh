@@ -4,7 +4,7 @@
 
 # Change these variables for your use
 
-CALLSIGN=N0CALL #
+CALLSIGN=N0CALL
 SSID=10 #CALLSIGN-NN
 LOCATOR=XXNNXX #6 character gridsquare
 WLNKPASS=********** #Super secret Winlink password
