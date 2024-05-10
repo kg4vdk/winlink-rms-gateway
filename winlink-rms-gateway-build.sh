@@ -106,7 +106,7 @@ EOF
 cat <<EOF > $HOME/DIREWOLF/start-direwolf.sh
 amixer -c 5 sset "Auto Gain Control" mute
 mkdir -p $HOME/DIREWOLF/logs
-direwolf -c $HOME/DIREWOLF/direwolf.conf -p -t 0 -T '%FT%T%Z' | tee $HOME/DIREWOLF/logs/direwolf.log
+direwolf -c $HOME/DIREWOLF/direwolf.conf -p -t 0 | tee $HOME/DIREWOLF/logs/direwolf.log
 EOF
 chmod +x $HOME/DIREWOLF/start-direwolf.sh
 
