@@ -97,7 +97,7 @@ rm /tmp/asound.conf
 # Direwolf
 mkdir -p $HOME/DIREWOLF
 cat <<EOF > $HOME/DIREWOLF/direwolf.conf
-MYCALL $CALLSIGN-$SSID
+MYCALL $CALLSIGN
 ADEVICE digirig-rx digirig-tx
 TXDELAY 50
 PTT /dev/digirig RTS
@@ -129,7 +129,7 @@ cat <<EOF > $HOME/LINBPQ/bpq32.cfg
 SIMPLE ; This sets many parameters to reasonable defaults
 
 LOCATOR=$LOCATOR ; Set to your Grid Square to send reports to the BPQ32 Node Map system
-NODECALL=$CALLSIGN-$SSID
+NODECALL=$CALLSIGN
 
 INFOMSG:
 $CALLSIGN's RMS Gateway
