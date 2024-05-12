@@ -97,7 +97,7 @@ rm /tmp/asound.conf
 # Direwolf
 mkdir -p $HOME/DIREWOLF
 cat <<EOF > $HOME/DIREWOLF/direwolf.conf
-MYCALL $CALLSIGN
+MYCALL $CALLSIGN-$SSID
 ADEVICE digirig-rx digirig-tx
 TXDELAY 50
 PTT /dev/digirig RTS
