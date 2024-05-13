@@ -5,11 +5,13 @@
 # Change these variables for your use
 
 CALLSIGN=N0CALL
-SSID=10 #CALLSIGN-NN
+DW_SSID=2 #Direwolf SSID
+NODE_SSID=5 #LinBPQ Node SSID (NODE_SSID and RMS_SSID *CANNOT MATCH*)
+RMS_SSID=10 #RMS Gateway SSID (Used by Winlink clients to connect)
 LOCATOR=XXNNXX #6 character gridsquare
-WLNKPASS=********** #Super secret Winlink password
+WLNK_PASS=********** #Super secret Winlink password
 FREQ=NNN.NNN #Frequency for the gateway
-NEWHOSTNAME=rms-gateway #Hostname for the machine
+NEW_HOSTNAME=rms-gateway #Hostname for the machine
 
 #########################
 
@@ -23,7 +25,7 @@ sudo dpkg --add-architecture i386
 sudo apt update
 
 # Install packages
-sudo apt install -y direwolf zlib1g:i386 tmux tor
+sudo apt install -y git gcc g++ make cmake libasound2-dev libudev-dev libavahi-client-dev libhamlib-dev libgps-dev zlib1g:i386 tmux tor
 
 # Add user to the "dialout" group
 sudo usermod -aG dialout $USER
@@ -94,10 +96,21 @@ rm /tmp/asound.conf
 
 #########################
 
-# Direwolf
+# Direwolf (1.7 required to fix hearing own packets on TX)
 mkdir -p $HOME/DIREWOLF
+cd $HOME/DIREWOLF
+rm -rf direwolf
+git clone https://github.com/wb2osz/direwolf
+cd direwolf
+git checkout 1.7
+mkdir build && cd build
+cmake ..
+make -j4
+sudo make install
+make install-conf
+
 cat <<EOF > $HOME/DIREWOLF/direwolf.conf
-MYCALL $CALLSIGN-$SSID
+MYCALL $CALLSIGN-$DW_SSID
 ADEVICE digirig-rx digirig-tx
 TXDELAY 50
 PTT /dev/digirig RTS
@@ -129,7 +142,7 @@ cat <<EOF > $HOME/LINBPQ/bpq32.cfg
 SIMPLE ; This sets many parameters to reasonable defaults
 
 LOCATOR=$LOCATOR ; Set to your Grid Square to send reports to the BPQ32 Node Map system
-NODECALL=$CALLSIGN
+NODECALL=$CALLSIGN-$NODE_SSID
 
 INFOMSG:
 $CALLSIGN's RMS Gateway
@@ -142,7 +155,7 @@ PORT
  LOGGING=1
  CMS=1 ; Enable CMS Gateway
  CMSCALL=$CALLSIGN ; CMS Gateway Call for Secure CMS Access(normally same as NODECALL)
- CMSPASS=$WLNKPASS ; Secure CMS Password
+ CMSPASS=$WLNK_PASS ; Secure CMS Password
  HTTPPORT=8073 ; Port used for Web Management
  TCPPORT=8010 ; Port for Telnet Access
  FBBPORT=8011 ; Not required, but allows monitoring using BPQTermTCP
@@ -169,11 +182,11 @@ PORT
  SLOTTIME=100
  PERSIST=64
  
- WL2KREPORT PUBLIC, www.winlink.org, 8778, $CALLSIGN-$SSID, $LOCATOR, 00-23, $(echo $FREQ.000 | sed 's/\.//g'), PKT1200, 10, 100, 5, 0
+ WL2KREPORT PUBLIC, www.winlink.org, 8778, $CALLSIGN-$RMS_SSID, $LOCATOR, 00-23, $(echo $FREQ.000 | sed 's/\.//g'), PKT1200, 10, 100, 5, 0
 
 ENDPORT
  
- APPLICATION 1,RMS,C 1 CMS,$CALLSIGN-$SSID
+ APPLICATION 1,RMS,C 1 CMS,$CALLSIGN-$RMS_SSID
 EOF
 
 cat <<EOF > $HOME/LINBPQ/start-linbpq.sh
@@ -262,9 +275,9 @@ sudo systemctl set-default multi-user.target
 #########################
 
 # Set hostname
-OLDHOSTNAME=$(cat /etc/hostname)
-sudo hostnamectl set-hostname $NEWHOSTNAME
-sudo sed -i "s/$OLDHOSTNAME/$NEWHOSTNAME/" /etc/hosts
+OLD_HOSTNAME=$(cat /etc/hostname)
+sudo hostnamectl set-hostname $NEW_HOSTNAME
+sudo sed -i "s/$OLD_HOSTNAME/$NEW_HOSTNAME/" /etc/hosts
 
 #########################
 
