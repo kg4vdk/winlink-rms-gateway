@@ -4,14 +4,14 @@
 
 # Change these variables for your use
 
-CALLSIGN=N0CALL
-DW_SSID=2 #Direwolf SSID
-NODE_SSID=5 #LinBPQ Node SSID (NODE_SSID and RMS_SSID *CANNOT MATCH*)
-RMS_SSID=10 #RMS Gateway SSID (Used by Winlink clients to connect)
-LOCATOR=XXNNXX #6 character gridsquare
-WLNK_PASS=********** #Super secret Winlink password
-FREQ=NNN.NNN #Frequency for the gateway
-NEW_HOSTNAME=rms-gateway #Hostname for the machine
+CALLSIGN=N0CALL          
+DW_SSID=2                   #Direwolf SSID
+NODE_SSID=5                 #LinBPQ Node SSID (NODE_SSID and RMS_SSID *CANNOT MATCH*)
+RMS_SSID=10                 #RMS Gateway SSID (Used by Winlink clients to connect)
+LOCATOR=XXNNXX              #6 character gridsquare
+WLNK_PASS=**********        #Super secret Winlink password
+FREQ=NNN.NNN                #Frequency for the gateway
+NEW_HOSTNAME=rms-gateway    #Hostname for the machine
 
 #########################
 
