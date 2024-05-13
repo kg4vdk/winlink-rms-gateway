@@ -107,7 +107,6 @@ mkdir build && cd build
 cmake ..
 make -j4
 sudo make install
-make install-conf
 
 cat <<EOF > $HOME/DIREWOLF/direwolf.conf
 MYCALL $CALLSIGN-$DW_SSID
