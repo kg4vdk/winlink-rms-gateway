@@ -158,7 +158,7 @@ PORT
  CONFIG
  LOGGING=1
  CMS=1 ; Enable CMS Gateway
- CMSCALL=$CALLSIGN ; CMS Gateway Call for Secure CMS Access(normally same as NODECALL)
+ CMSCALL=$CALLSIGN-$RMS_SSID ; CMS Gateway Call for Secure CMS Access(normally same as NODECALL)
  CMSPASS=$WLNK_PASS ; Secure CMS Password
  HTTPPORT=8073 ; Port used for Web Management
  TCPPORT=8010 ; Port for Telnet Access
