@@ -278,11 +278,6 @@ rm /tmp/torrc
 
 #########################
 
-# Disable GUI
-sudo systemctl set-default multi-user.target
-
-#########################
-
 # Set hostname
 OLD_HOSTNAME=$(cat /etc/hostname)
 sudo hostnamectl set-hostname $NEW_HOSTNAME
@@ -290,5 +285,9 @@ sudo sed -i "s/$OLD_HOSTNAME/$NEW_HOSTNAME/" /etc/hosts
 
 #########################
 
+# Disable GUI
+#sudo systemctl set-default multi-user.target
+
+#########################
 # Reboot
-sudo reboot
+#sudo reboot
