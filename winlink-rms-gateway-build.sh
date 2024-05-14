@@ -279,10 +279,5 @@ sudo hostnamectl set-hostname $NEW_HOSTNAME
 sudo sed -i "s/$OLD_HOSTNAME/$NEW_HOSTNAME/" /etc/hosts
 
 #########################
-
-# Disable GUI
-#sudo systemctl set-default multi-user.target
-
-#########################
 # Reboot
 #sudo reboot
