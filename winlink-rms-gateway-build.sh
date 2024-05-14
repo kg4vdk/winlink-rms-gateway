@@ -117,7 +117,7 @@ TXDELAY 50
 PTT /dev/digirig RTS
 CDIGIPEAT 0 0
 DIGIPEAT 0 0 ^WIDE1-1$ ^WIDE1-1$
-PBEACON DELAY=0:10 EVERY=30 COMMENT="$CALLSIGN-$DW_SSID Digi/IGate" SYMBOL="igate" OVERLAY="T" LAT=$LAT LONG=$LON
+PBEACON DELAY=0:10 EVERY=30 COMMENT="$CALLSIGN-$DW_SSID Digi" SYMBOL="digi" LAT=$LAT LONG=$LON
 EOF
 
 cat <<EOF > $HOME/DIREWOLF/start-direwolf.sh
@@ -270,13 +270,14 @@ HiddenServicePort 80 127.0.0.1:8073
 EOF
 sudo cp /tmp/torrc /etc/tor/torrc
 rm /tmp/torrc
+sudo systemctl restart tor.service
 
 #########################
 
 # Set hostname
 OLD_HOSTNAME=$(cat /etc/hostname)
-sudo hostnamectl set-hostname $NEW_HOSTNAME
 sudo sed -i "s/$OLD_HOSTNAME/$NEW_HOSTNAME/" /etc/hosts
+sudo hostnamectl set-hostname $NEW_HOSTNAME
 
 #########################
 # Reboot
