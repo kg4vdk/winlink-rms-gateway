@@ -215,7 +215,7 @@ Description=Direwolf Service
 After=network.target
 
 [Service]
-Type=simple
+Type=forking
 ExecStart=/usr/bin/tmux new-session -d -s direwolf '$HOME/DIREWOLF/start-direwolf.sh'
 Restart=always
 
