@@ -13,10 +13,12 @@ Winlink Packet RMS Gateway on Debian
 - Tor (to enable remote SSH access without port forwarding)
 
 # RMS Gateway Install
-- Download winlink-rms-gateway-build.sh
-  * `wget https://github.com/kg4vdk/winlink-rms-gateway/archive/refs/heads/main.zip`
-- Modify the variables at the top of the script appropriately
-- Run the script
+- On a fresh Debian installation:
+  * Comment out the CD-ROM repository in `/etc/apt/sources.list`
+  * Install git: `sudo apt update && sudo apt install git`
+- Clone this repository
+- Modify the variables at the top of `winlink-rms-gateway-build.sh`
+- Run the script: `bash winlink-rms-gateway-build.sh`
 
 # Notes
 ### Dell Wyse 3040 BIOS Settings (F2 to access)
