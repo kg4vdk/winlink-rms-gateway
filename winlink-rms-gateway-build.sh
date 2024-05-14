@@ -152,7 +152,7 @@ SIMPLE ; This sets many parameters to reasonable defaults
 
 LOCATOR=$LOCATOR ; Set to your Grid Square to send reports to the BPQ32 Node Map system
 NODECALL=$CALLSIGN-$NODE_SSID
-
+IDINTERVAL=0
 INFOMSG:
 $CALLSIGN's RMS Gateway
 ***
