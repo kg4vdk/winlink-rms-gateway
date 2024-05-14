@@ -10,7 +10,6 @@ NODE_SSID=5                 #LinBPQ Node SSID (NODE_SSID and RMS_SSID *CANNOT MA
 RMS_SSID=10                 #RMS Gateway SSID (Used by Winlink clients to connect)
 LOCATOR=XXNNXX              #6 character gridsquare
 WLNK_PASS=**********        #Super secret Winlink password
-IG_PASS=*****               #APRS-IS passcode
 FREQ=NNN.NNN                #Frequency for the gateway
 LAT=NN.NNNNN                #Latitude (negative for south)
 LON=NN.NNNNN                #Longitude (negative for west)
@@ -116,13 +115,9 @@ MYCALL $CALLSIGN-$DW_SSID
 ADEVICE digirig-rx digirig-tx
 TXDELAY 50
 PTT /dev/digirig RTS
+CDIGIPEAT 0 0
 DIGIPEAT 0 0 ^WIDE1-1$ ^WIDE1-1$
 PBEACON DELAY=0:10 EVERY=30 COMMENT="$CALLSIGN-$DW_SSID Digi/IGate" SYMBOL="igate" OVERLAY="T" LAT=$LAT LONG=$LON
-IGSERVER noam.aprs2.net
-IGLOGIN $CALLSIGN-$DW_SSID $IG_PASS 
-IGTXVIA 0 WIDE1-1
-IGTXLIMIT 6 10
-IGFILTER m/100
 EOF
 
 cat <<EOF > $HOME/DIREWOLF/start-direwolf.sh
