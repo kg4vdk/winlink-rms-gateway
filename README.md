@@ -30,7 +30,8 @@ Winlink Packet RMS Gateway on Debian
 - ***Ensure Digirig is disconnected while installing!***
 - No root password set, which enables sudo for created user
 - Use network mirror
-- Deselect GNOME, instead selecting XFCE
+- Deselect Debian desktop environment
+- Deselect GNOME
 - Select SSH server
 - Reboot into installer (F12 to select boot device)
   * Advanced --> Rescue Mode
