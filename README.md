@@ -14,6 +14,7 @@ Winlink Packet RMS Gateway on Debian
 
 # RMS Gateway Install
 - Download winlink-rms-gateway-build.sh
+  * `wget https://github.com/kg4vdk/winlink-rms-gateway/archive/refs/heads/main.zip`
 - Modify the variables at the top of the script appropriately
 - Run the script
 
