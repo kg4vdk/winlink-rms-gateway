@@ -100,9 +100,9 @@ rm /tmp/asound.conf
 #########################
 
 # Direwolf (1.7 required to fix hearing own packets on TX)
+rm -rf $HOME/DIREWOLF
 mkdir -p $HOME/DIREWOLF
 cd $HOME/DIREWOLF
-rm -rf direwolf
 git clone https://github.com/wb2osz/direwolf
 cd direwolf
 git checkout 1.7
@@ -135,9 +135,9 @@ chmod +x $HOME/DIREWOLF/start-direwolf.sh
 #########################
 
 # LinBPQ
+rm -rf $HOME/LINBPQ
 mkdir -p $HOME/LINBPQ
 cd $HOME/LINBPQ
-rm linbpq
 wget -nv http://cantab.net/users/john.wiseman/Downloads/Beta/linbpq
 chmod +x $HOME/LINBPQ/linbpq
 rm -rf $HOME/LINBPQ/HTML
