@@ -26,7 +26,7 @@ Winlink Packet RMS Gateway on Debian
 - Maintenance
   * Data Wipe --> Wipe on Next Boot
   
-### Debian Install on Dell Wyze 3040
+### Debian Install on Dell Wyse 3040
 - ***Ensure Digirig is disconnected while installing!***
 - No root password set, which enables sudo for created user
 - Use network mirror
