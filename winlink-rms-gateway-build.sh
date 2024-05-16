@@ -226,7 +226,7 @@ After=direwolf.service
 
 [Service]
 Type=simple
-ExecStartPre=/usr/bin/sleep 15
+ExecStartPre=/usr/bin/sleep 5
 ExecStart=/usr/bin/tmux new-session -d -s linbpq '$HOME/LINBPQ/start-linbpq.sh'
 Restart=always
 
@@ -236,6 +236,30 @@ EOF
 
 systemctl --user enable direwolf.service
 systemctl --user enable linbpq.service
+
+#########################
+
+# Start/stop/monitor scripts for services
+mkdir -p $HOME/bin
+if ! grep "export PATH" $HOME/.bashrc > /dev/null; then
+   echo "export PATH=$PATH:$HOME/bin" >> $HOME/.bashrc
+fi
+
+cat <<EOF > $HOME/bin/start-services
+#!/bin/bash
+# DIREWOLF
+systemctl --user start direwolf.service
+# LINBPQ
+systemctl --user start linbpq.service
+EOF
+
+cat <<EOF > $HOME/bin/stop-services
+#!/bin/bash
+# LINBPQ
+systemctl --user stop linbpq.service
+# DIREWOLF
+systemctl --user stop direwolf.service
+EOF
 
 #########################
 
