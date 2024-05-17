@@ -249,6 +249,7 @@ systemctl --user start direwolf.service
 # LINBPQ
 systemctl --user start linbpq.service
 EOF
+chmod +x $HOME/bin/start-services
 
 cat <<EOF > $HOME/bin/stop-services
 #!/bin/bash
@@ -257,6 +258,7 @@ systemctl --user stop linbpq.service
 # DIREWOLF
 systemctl --user stop direwolf.service
 EOF
+chmod +x $HOME/bin/stop-services
 
 #########################
 
