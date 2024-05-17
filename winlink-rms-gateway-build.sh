@@ -27,16 +27,13 @@ sudo dpkg --add-architecture i386
 sudo apt update
 
 # Install packages
-sudo apt install -y git unzip gcc g++ make cmake libasound2-dev libudev-dev libavahi-client-dev libhamlib-dev libgps-dev zlib1g:i386 tmux tor avahi-daemon
+sudo apt install -y git unzip gcc g++ make cmake libasound2-dev libudev-dev libavahi-client-dev libhamlib-dev libgps-dev zlib1g:i386 tmux tor avahi-daemon timeshift
 
 # Add user to the "dialout" group
 sudo usermod -aG dialout $USER
 
 # Enable linger for user's services
 sudo loginctl enable-linger $USER
-
-# Remove extraneous directories from user's $HOME
-rm -rf $HOME/{Documents,Music,Pictures,Public,Templates,Videos}
 
 #########################
 
