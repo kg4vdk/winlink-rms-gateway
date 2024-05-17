@@ -5,7 +5,7 @@
 # Change these variables for your use
 
 CALLSIGN=N0CALL
-DW_SSID=2                   #Direwolf SSID
+DW_SSID=10                  #Direwolf SSID
 NODE_SSID=5                 #LinBPQ Node SSID (NODE_SSID and RMS_SSID *CANNOT MATCH*)
 RMS_SSID=10                 #RMS Gateway SSID (Used by Winlink clients to connect)
 LOCATOR=XXNNXX              #6 character gridsquare
