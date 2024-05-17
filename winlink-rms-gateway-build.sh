@@ -29,7 +29,7 @@ sudo dpkg --add-architecture i386
 sudo apt update
 
 # Install packages
-sudo apt install -y git unzip gcc g++ make cmake libasound2-dev libudev-dev libavahi-client-dev libhamlib-dev libgps-dev zlib1g:i386 tmux tor avahi-daemon timeshift
+sudo apt install -y git unzip gcc g++ make cmake libasound2-dev libudev-dev libavahi-client-dev libhamlib-dev libgps-dev zlib1g:i386 alsa-utils tmux tor avahi-daemon timeshift
 
 # Add user to the "dialout" group
 sudo usermod -aG dialout $USER
