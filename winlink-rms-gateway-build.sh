@@ -9,7 +9,9 @@ DW_SSID=10                  #Direwolf SSID
 NODE_SSID=5                 #LinBPQ Node SSID (NODE_SSID and RMS_SSID *CANNOT MATCH*)
 RMS_SSID=10                 #RMS Gateway SSID (Used by Winlink clients to connect)
 LOCATOR=XXNNXX              #6 character gridsquare
+WLNK_USER=CMSCALL           #CMS User (Must have authorixation from Winlink team)
 WLNK_PASS=**********        #Super secret Winlink password
+BPQ_SYSOP_PASS=**********   #BPQ SYSOP Password
 FREQ=NNN.NNN                #Frequency for the gateway
 LAT=NN.NNNNN                #Latitude (negative for south)
 LON=NN.NNNNN                #Longitude (negative for west)
@@ -155,14 +157,14 @@ PORT
  CONFIG
  LOGGING=1
  CMS=1 ; Enable CMS Gateway
- CMSCALL=$CALLSIGN ; CMS Gateway Call for Secure CMS Access(normally same as NODECALL)
+ CMSCALL=$WLNK_USER ; CMS Gateway Call for Secure CMS Access(normally same as NODECALL)
  CMSPASS=$WLNK_PASS ; Secure CMS Password
- HTTPPORT=8073 ; Port used for Web Management
+ HTTPPORT=8080 ; Port used for Web Management
  TCPPORT=8010 ; Port for Telnet Access
  FBBPORT=8011 ; Not required, but allows monitoring using BPQTermTCP
  MAXSESSIONS=10
  CloseOnDisconnect=1 ; Close Telent Session when Node disconnects
- USER=user,password,$CALLSIGN,"",SYSOP
+ USER=$(echo $CALLSIGN | tr '[:upper:]' '[:lower:]'),$BPQ_SYSOP_PASS,$CALLSIGN,"",SYSOP
  
  ENDPORT
  
