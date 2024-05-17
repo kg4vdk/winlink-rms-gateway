@@ -4,18 +4,18 @@
 
 # Change these variables for your use
 
-CALLSIGN=N0CALL
+CALLSIGN=N0CALL             
 DW_SSID=10                  #Direwolf SSID
 NODE_SSID=5                 #LinBPQ Node SSID (NODE_SSID and RMS_SSID *CANNOT MATCH*)
 RMS_SSID=10                 #RMS Gateway SSID (Used by Winlink clients to connect)
 LOCATOR=XXNNXX              #6 character gridsquare
-WLNK_USER=CMSCALL           #CMS User (Must have authorixation from Winlink team)
+WLNK_USER=CMSCALL           #CMS User (Must have authorization from Winlink team)
 WLNK_PASS=**********        #Super secret Winlink password
-BPQ_SYSOP_PASS=**********   #BPQ SYSOP Password
+BPQ_SYSOP_PASS=**********   #BPQ SYSOP Password (SYSOP username is the callsign, in lowercase)
 FREQ=NNN.NNN                #Frequency for the gateway
 LAT=NN.NNNNN                #Latitude (negative for south)
 LON=NN.NNNNN                #Longitude (negative for west)
-NEW_HOSTNAME=rms-gateway    #Hostname for the machine
+NEW_HOSTNAME=new-hostname   #Hostname for the machine
 
 #########################
 
@@ -140,6 +140,7 @@ cd $HOME/LINBPQ/HTML
 wget -nv http://cantab.net/users/john.wiseman/Downloads/Beta/HTMLPages.zip
 unzip HTMLPages.zip
 rm HTMLPages.zip
+rm background.jpg
 
 cat <<EOF > $HOME/LINBPQ/bpq32.cfg
 SIMPLE ; This sets many parameters to reasonable defaults
