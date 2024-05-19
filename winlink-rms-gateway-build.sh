@@ -262,6 +262,32 @@ systemctl --user stop direwolf.service
 EOF
 chmod +x $HOME/bin/stop-services
 
+cat <<EOF > $HOME/bin/monitor-services
+#!/bin/bash
+
+SESSION=monitor-services
+WINDOW=$SESSION:0
+
+if ! tmux ls | grep $SESSION; then
+	tmux new-session -s $SESSION -d
+	tmux split-window -v -t $SESSION
+	tmux split-window -h -t $SESSION
+	tmux split-window -h -t $SESSION
+	tmux split-window -h -t $SESSION
+	tmux select-layout tiled
+
+	tmux send-keys -t $WINDOW.0 "top" Enter
+	tmux send-keys -t $WINDOW.1 "watch -t 'free -mh; echo; df -h'" Enter
+	tmux send-keys -t $WINDOW.2 "clear; tail -f $HOME/DIREWOLF/logs/direwolf.log" Enter
+	tmux send-keys -t $WINDOW.3 "clear; tail -f $HOME/LINBPQ/CMSAccessLatest.log" Enter
+
+	tmux attach -t $SESSION
+else
+	tmux attach -t monitor-services
+fi
+EOF
+chmod +x $HOME/bin/monitor-services
+
 #########################
 
 # Log rotation/cleanup
