@@ -318,7 +318,7 @@ echo "00 02 * * * $USER $HOME/LINBPQ/log-cleanup.sh" | sudo tee /etc/crontab
 cat <<EOF > /tmp/torrc
 HiddenServiceDir /var/lib/tor/hidden_service/
 HiddenServicePort 22 127.0.0.1:22
-HiddenServicePort 80 127.0.0.1:8073
+HiddenServicePort 80 127.0.0.1:8080
 EOF
 sudo cp /tmp/torrc /etc/tor/torrc
 rm /tmp/torrc
