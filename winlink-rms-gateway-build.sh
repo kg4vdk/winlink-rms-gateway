@@ -5,7 +5,7 @@
 # Change these variables for your use
 
 CALLSIGN=N0CALL             
-DW_SSID=1                   #Direwolf SSID
+DW_SSID=10                  #Direwolf SSID
 NODE_SSID=5                 #LinBPQ Node SSID (NODE_SSID and RMS_SSID *CANNOT MATCH*)
 RMS_SSID=10                 #RMS Gateway SSID (Used by Winlink clients to connect)
 LOCATOR=XXNNXX              #6 character gridsquare
@@ -266,20 +266,20 @@ cat <<EOF > $HOME/bin/monitor-services
 #!/bin/bash
 
 SESSION=monitor-services
-WINDOW=$SESSION:0
+WINDOW=\$SESSION:0
 
-if ! tmux ls | grep $SESSION; then
-	tmux new-session -s $SESSION -d
-	tmux split-window -v -t $SESSION
-	tmux split-window -h -t $SESSION
-	tmux split-window -h -t $SESSION
-	tmux split-window -h -t $SESSION
+if ! tmux ls | grep \$SESSION; then
+	tmux new-session -s \$SESSION -d
+	tmux split-window -v -t \$SESSION
+	tmux split-window -h -t \$SESSION
+	tmux split-window -h -t \$SESSION
+	tmux split-window -h -t \$SESSION
 	tmux select-layout tiled
 
-	tmux send-keys -t $WINDOW.0 "top" Enter
-	tmux send-keys -t $WINDOW.1 "watch -t 'free -mh; echo; df -h'" Enter
-	tmux send-keys -t $WINDOW.2 "clear; tail -f $HOME/DIREWOLF/logs/direwolf.log" Enter
-	tmux send-keys -t $WINDOW.3 "clear; tail -f $HOME/LINBPQ/CMSAccessLatest.log" Enter
+	tmux send-keys -t \$WINDOW.0 "top" Enter
+	tmux send-keys -t \$WINDOW.1 "watch -t 'free -mh; echo; df -h'" Enter
+	tmux send-keys -t \$WINDOW.2 "clear; tail -f $HOME/DIREWOLF/logs/direwolf.log" Enter
+	tmux send-keys -t \$WINDOW.3 "clear; tail -f $HOME/LINBPQ/CMSAccessLatest.log" Enter
 
 	tmux attach -t $SESSION
 else
