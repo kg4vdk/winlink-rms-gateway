@@ -278,8 +278,8 @@ if ! tmux ls | grep \$SESSION; then
 
 	tmux send-keys -t \$WINDOW.0 "top" Enter
 	tmux send-keys -t \$WINDOW.1 "watch -t 'free -mh; echo; df -h'" Enter
-	tmux send-keys -t \$WINDOW.2 "clear; tail -f $HOME/DIREWOLF/logs/direwolf.log" Enter
-	tmux send-keys -t \$WINDOW.3 "clear; tail -f $HOME/LINBPQ/CMSAccessLatest.log" Enter
+	tmux send-keys -t \$WINDOW.2 "watch -t 'tail -f $HOME/DIREWOLF/logs/direwolf.log'" Enter
+	tmux send-keys -t \$WINDOW.3 "watch -t 'tail -f $HOME/LINBPQ/CMSAccessLatest.log'" Enter
 
 	tmux attach -t $SESSION
 else
