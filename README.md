@@ -9,7 +9,7 @@ Winlink Packet RMS Gateway on Debian
 
 # Software
 - Debian 12.7 Bookworm
-- Direwolf
+- Direwolf 1.7
 - LinBPQ
 - Tor (to enable remote SSH access without port forwarding)
 
