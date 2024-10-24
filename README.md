@@ -18,7 +18,7 @@ Winlink Packet RMS Gateway on Debian
   * Comment out the CD-ROM repository in `/etc/apt/sources.list`
   * Install git: `sudo apt update && sudo apt install git`
 - Clone this repository
-- Modify the variables at the top of `winlink-rms-gateway-build.sh`
+- **Modify the variables at the top of `winlink-rms-gateway-build.sh`**
 - Run the script: `bash winlink-rms-gateway-build.sh`
 
 # Notes
