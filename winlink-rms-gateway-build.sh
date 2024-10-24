@@ -114,9 +114,10 @@ MYCALL $CALLSIGN-$DW_SSID
 ADEVICE digirig-rx digirig-tx
 TXDELAY 50
 PTT /dev/digirig RTS
-CDIGIPEAT 0 0
-DIGIPEAT 0 0 ^WIDE1-1$ ^WIDE1-1$
-PBEACON DELAY=0:10 EVERY=30 COMMENT="$CALLSIGN-$DW_SSID Winlink RMS Gateway + Winlink P2P & APRS Digipeater" SYMBOL="DIGI" OVERLAY="W" LAT=$LAT LONG=$LON
+#CDIGIPEAT 0 0 # Uncomment to enable connected mode (Winlink P2P) digipeating.
+#DIGIPEAT 0 0 ^WIDE1-1$ ^WIDE1-1$ # Uncomment to enable APRS digipeating on gateway frequency.
+#Uncomment PBEACON line to enable APRS beacon on gateway frequency.
+#PBEACON DELAY=0:10 EVERY=30 COMMENT="$CALLSIGN-$DW_SSID Winlink RMS Gateway + Winlink P2P & APRS Digipeater" SYMBOL="DIGI" OVERLAY="W" LAT=$LAT LONG=$LON
 EOF
 
 cat <<EOF > $HOME/DIREWOLF/start-direwolf.sh
