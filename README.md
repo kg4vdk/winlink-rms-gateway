@@ -3,11 +3,12 @@ Winlink Packet RMS Gateway on Debian
 # Hardware
 - Yaesu FT-2980R
 - Digirig + Cable
-- Dell Wyse 2040 Thin Client
+- Dell Wyse 3040 Thin Client (8GB eMMC Flash / 2GB RAM)
 - Edimax EW-7811Un Wi-Fi Adapter (Ethernet preferred)
+- Monitor with DisplayPort (Used during setup)
 
 # Software
-- Debian 12.5 Bookworm
+- Debian 12.7 Bookworm
 - Direwolf
 - LinBPQ
 - Tor (to enable remote SSH access without port forwarding)
@@ -43,5 +44,5 @@ Winlink Packet RMS Gateway on Debian
   * cp /boot/efi/EFI/debian/grubx64.efi /boot/efi/EFI/BOOT/BOOTX64.EFI
   * CTL+D to exit shell
   * Reboot the system (remove the installer USB)
-  * ***The Wyse 3040 WILL NOT reboot (`sudo reboot`) if attached to a monitor.***
+  * ***The Wyse 3040 WILL NOT REBOOT if attached to a monitor.***
     - When running headless, this is not an issue.
