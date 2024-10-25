@@ -100,14 +100,8 @@ rm /tmp/asound.conf
 # Direwolf (1.7 required to fix hearing own packets on TX)
 rm -rf $HOME/DIREWOLF
 mkdir -p $HOME/DIREWOLF
-cd $HOME/DIREWOLF
-git clone https://github.com/wb2osz/direwolf
-cd direwolf
-git checkout 1.7
-mkdir build && cd build
-cmake ..
-make -j4
-sudo make install
+sudo cp direwolf_1.7 /usr/local/bin/direwolf
+chmod +x /usr/local/bin/direwolf
 
 cat <<EOF > $HOME/DIREWOLF/direwolf.conf
 MYCALL $CALLSIGN-$DW_SSID
@@ -132,16 +126,12 @@ chmod +x $HOME/DIREWOLF/start-direwolf.sh
 # LinBPQ
 rm -rf $HOME/LINBPQ
 mkdir -p $HOME/LINBPQ
-cd $HOME/LINBPQ
-wget -nv http://cantab.net/users/john.wiseman/Downloads/Beta/linbpq
+cp linbpq_6.0.24.47 $HOME/LINBPQ/linbpq
 chmod +x $HOME/LINBPQ/linbpq
 rm -rf $HOME/LINBPQ/HTML
 mkdir -p $HOME/LINBPQ/HTML
-cd $HOME/LINBPQ/HTML
-wget -nv http://cantab.net/users/john.wiseman/Downloads/Beta/HTMLPages.zip
-unzip HTMLPages.zip
-rm HTMLPages.zip
-rm background.jpg
+unzip -o -d $HOME/LINBPQ/HTML HTMLPages.zip
+rm $HOME/LINBPQ/HTML/background.jpg
 
 cat <<EOF > $HOME/LINBPQ/bpq32.cfg
 SIMPLE ; This sets many parameters to reasonable defaults
