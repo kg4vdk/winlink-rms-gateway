@@ -8,19 +8,13 @@ CALLSIGN=N0CALL
 DW_SSID=10                  #Direwolf SSID
 NODE_SSID=5                 #LinBPQ Node SSID (NODE_SSID and RMS_SSID *CANNOT MATCH*)
 RMS_SSID=10                 #RMS Gateway SSID (Used by Winlink clients to connect)
-LOCATOR=XXNNXX              #6 character gridsquare
+LOCATOR=XXNNXX              #6 character gridsquare for Gateway
 WLNK_USER=CMSCALL           #CMS User (Must have authorization from Winlink team)
-WLNK_PASS=**********        #Super secret Winlink password
-BPQ_SYSOP_PASS=**********   #BPQ SYSOP Password (SYSOP username is the callsign, in lowercase)
+WLNK_PASS=**********        #Super secret Winlink password for CMSCALL
+BPQ_SYSOP_PASS=**********   #Set the BPQ SYSOP Password (SYSOP username is the callsign, in lowercase)
 FREQ=NNN.NNN                #Frequency for the gateway
-LAT=NN.NNNNN                #Latitude (negative for south)
-LON=NN.NNNNN                #Longitude (negative for west)
-NEW_HOSTNAME=new-hostname   #Hostname for the machine
 
 #########################
-
-# Comment out CD-ROM repository
-sudo sed -i 's/^deb cdrom:/#&/' /etc/apt/sources.list
 
 # Add access to i386 packages
 sudo dpkg --add-architecture i386
@@ -30,7 +24,7 @@ sudo apt update
 
 # Install packages
 #sudo apt install -y gcc g++ make cmake libasound2-dev libudev-dev libavahi-client-dev libhamlib-dev libgps-dev
-sudo apt install -y git unzip alsa-utils tmux tor avahi-daemon zlib1g:i386 libgps28 libhamlib4 libavahi-client3
+sudo apt install -y git unzip alsa-utils tmux avahi-daemon zlib1g:i386 libgps28 libhamlib4 libavahi-client3
 
 # Add user to the "dialout" group
 sudo usermod -aG dialout $USER
@@ -109,15 +103,6 @@ MYCALL $CALLSIGN-$DW_SSID
 ADEVICE digirig-rx digirig-tx
 TXDELAY 50
 PTT /dev/digirig RTS
-
-# Uncomment to enable connected mode (Winlink P2P) digipeating.
-#CDIGIPEAT 0 0
-
-# Uncomment to enable APRS digipeating on gateway frequency.
-#DIGIPEAT 0 0 ^WIDE1-1$ ^WIDE1-1$
-
-#Uncomment PBEACON line to enable APRS beacon on gateway frequency.
-#PBEACON DELAY=0:10 EVERY=30 COMMENT="$CALLSIGN-$DW_SSID Winlink RMS Gateway" SYMBOL="DIGI" OVERLAY="W" LAT=$LAT LONG=$LON
 EOF
 
 cat <<EOF > $HOME/DIREWOLF/start-direwolf.sh
@@ -309,25 +294,6 @@ EOF
 chmod +x $HOME/LINBPQ/log-cleanup.sh
 echo "00 02 * * * $USER $HOME/LINBPQ/log-cleanup.sh" | sudo tee /etc/crontab
 
-#########################
-
-# Configure Tor for remote SSH access
-cat <<EOF > /tmp/torrc
-HiddenServiceDir /var/lib/tor/hidden_service/
-HiddenServicePort 22 127.0.0.1:22
-HiddenServicePort 80 127.0.0.1:8080
-EOF
-sudo cp /tmp/torrc /etc/tor/torrc
-rm /tmp/torrc
-sudo systemctl restart tor.service
-
-#########################
-
-# Set hostname
-OLD_HOSTNAME=$(cat /etc/hostname)
-sudo sed -i "s/$OLD_HOSTNAME/$NEW_HOSTNAME/" /etc/hosts
-sudo hostnamectl set-hostname $NEW_HOSTNAME
-
-#########################
-# Reboot
-#sudo reboot
+##########
+# REBOOT #
+##########
