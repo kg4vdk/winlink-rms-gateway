@@ -30,7 +30,7 @@ sudo apt update
 
 # Install packages
 #sudo apt install -y gcc g++ make cmake libasound2-dev libudev-dev libavahi-client-dev libhamlib-dev libgps-dev
-sudo apt install -y git unzip alsa-utils tmux tor avahi-daemon zlib1g:i386
+sudo apt install -y git unzip alsa-utils tmux tor avahi-daemon zlib1g:i386 libgps28 libhamlib4 libavahi-client3
 
 # Add user to the "dialout" group
 sudo usermod -aG dialout $USER
@@ -109,10 +109,15 @@ MYCALL $CALLSIGN-$DW_SSID
 ADEVICE digirig-rx digirig-tx
 TXDELAY 50
 PTT /dev/digirig RTS
-#CDIGIPEAT 0 0 # Uncomment to enable connected mode (Winlink P2P) digipeating.
-#DIGIPEAT 0 0 ^WIDE1-1$ ^WIDE1-1$ # Uncomment to enable APRS digipeating on gateway frequency.
+
+# Uncomment to enable connected mode (Winlink P2P) digipeating.
+#CDIGIPEAT 0 0
+
+# Uncomment to enable APRS digipeating on gateway frequency.
+#DIGIPEAT 0 0 ^WIDE1-1$ ^WIDE1-1$
+
 #Uncomment PBEACON line to enable APRS beacon on gateway frequency.
-#PBEACON DELAY=0:10 EVERY=30 COMMENT="$CALLSIGN-$DW_SSID Winlink RMS Gateway + Winlink P2P & APRS Digipeater" SYMBOL="DIGI" OVERLAY="W" LAT=$LAT LONG=$LON
+#PBEACON DELAY=0:10 EVERY=30 COMMENT="$CALLSIGN-$DW_SSID Winlink RMS Gateway" SYMBOL="DIGI" OVERLAY="W" LAT=$LAT LONG=$LON
 EOF
 
 cat <<EOF > $HOME/DIREWOLF/start-direwolf.sh
