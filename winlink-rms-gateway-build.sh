@@ -4,7 +4,7 @@
 
 # Change these variables for your use
 
-CALLSIGN=N0CALL             
+CALLSIGN=N0CALL
 DW_SSID=10                  #Direwolf SSID
 NODE_SSID=5                 #LinBPQ Node SSID (NODE_SSID and RMS_SSID *CANNOT MATCH*)
 RMS_SSID=10                 #RMS Gateway SSID (Used by Winlink clients to connect)
@@ -30,7 +30,7 @@ sudo apt update
 
 # Install packages
 #sudo apt install -y gcc g++ make cmake libasound2-dev libudev-dev libavahi-client-dev libhamlib-dev libgps-dev
-sudo apt install -y git unzip alsa-utils tmux tor avahi-daemon timeshift zlib1g:i386
+sudo apt install -y git unzip alsa-utils tmux tor avahi-daemon zlib1g:i386
 
 # Add user to the "dialout" group
 sudo usermod -aG dialout $USER
@@ -102,7 +102,7 @@ rm /tmp/asound.conf
 rm -rf $HOME/DIREWOLF
 mkdir -p $HOME/DIREWOLF
 sudo cp direwolf_1.7 /usr/local/bin/direwolf
-chmod +x /usr/local/bin/direwolf
+sudo chmod +x /usr/local/bin/direwolf
 
 cat <<EOF > $HOME/DIREWOLF/direwolf.conf
 MYCALL $CALLSIGN-$DW_SSID
