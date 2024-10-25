@@ -15,6 +15,7 @@ Winlink Packet RMS Gateway on Debian
 # Debian Install
 - ***Ensure Digirig is disconnected while installing!***
 - No root password set, which enables sudo for created user
+- Select Use network mirror
 - De-select Debian desktop environment
 - De-select GNOME
 - Select SSH server
