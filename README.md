@@ -1,27 +1,44 @@
 # winlink-rms-gateway
 Winlink Packet RMS Gateway on Debian
-# Hardware
-- Yaesu FT-2980R
+# Hardware Used
+- Transceiver
 - Digirig + Cable
 - Dell Wyse 3040 Thin Client (8GB eMMC Flash / 2GB RAM)
 - Edimax EW-7811Un Wi-Fi Adapter (Ethernet preferred)
 - Monitor with DisplayPort (Used during setup)
 
-# Software
+# Software Used
 - Debian 12.7 Bookworm
 - Direwolf 1.7
 - LinBPQ 6.0.24.47
-- Tor (to enable remote SSH access without port forwarding)
+
+# Debian Install
+- ***Ensure Digirig is disconnected while installing!***
+- No root password set, which enables sudo for created user
+- De-select Debian desktop environment
+- De-select GNOME
+- Select SSH server
 
 # RMS Gateway Install
 - On a fresh Debian installation:
   * Comment out the CD-ROM repository in `/etc/apt/sources.list`
   * Install git: `sudo apt update && sudo apt install git`
 - Clone this repository
+- `git clone https://github.com/kg4vdk/winlink-rms-gateway`
+- Change into repository directory
+- `cd winlink-rms-gateway`
 - **Modify the variables at the top of `winlink-rms-gateway-build.sh`**
-- Run the script: `bash winlink-rms-gateway-build.sh`
+- `nano winlink-rms-gateway.sh`
+- Run the script: `bash ./winlink-rms-gateway-build.sh`
+
+# Manage RMS Gateway
+- `monitor-services` opens in `tmux`
+  * Exit `tmux` with `Ctrl + B`, followed by `D`
+- `stop-services`, and `start-services`
 
 # Notes
+### Dell Wyse 3040 WILL NOT REBOOT if attached to a monitor.
+- Power cycle to reboot (When running headless, this is not an issue)
 ### Dell Wyse 3040 BIOS Settings (F2 to access)
 - Restore Settings (Factory)
 - System Configuration
@@ -29,14 +46,8 @@ Winlink Packet RMS Gateway on Debian
   * Audio --> Disable Audio (Optional, but eliminates some kernel messages printing to the console)
 - Maintenance
   * Data Wipe --> Wipe on Next Boot
-  
-### Debian Install on Dell Wyse 3040
-- ***Ensure Digirig is disconnected while installing!***
-- No root password set, which enables sudo for created user
-- Use network mirror
-- Deselect Debian desktop environment
-- Deselect GNOME
-- Select SSH server
+
+### Dell Wyse 3040 EFI Fix
 - Reboot into installer (F12 to select boot device)
   * Advanced --> Rescue Mode
   *  /dev/mmcblk0p2 as root file system
@@ -44,5 +55,3 @@ Winlink Packet RMS Gateway on Debian
   * cp /boot/efi/EFI/debian/grubx64.efi /boot/efi/EFI/BOOT/BOOTX64.EFI
   * CTL+D to exit shell
   * Reboot the system (remove the installer USB)
-  * ***The Wyse 3040 WILL NOT REBOOT if attached to a monitor.***
-    - When running headless, this is not an issue.
