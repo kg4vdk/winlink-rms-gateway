@@ -26,7 +26,7 @@ Winlink Packet RMS Gateway on Debian
 - Restore Settings (Factory)
 - System Configuration
   * USB Configuration --> Enable USB Boot Support
-  * Audio --> Disable Audio (Optional, but eliminates some kernel messages printing to the tty)
+  * Audio --> Disable Audio (Optional, but eliminates some kernel messages printing to the console)
 - Maintenance
   * Data Wipe --> Wipe on Next Boot
   
