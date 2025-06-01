@@ -8,7 +8,7 @@ Winlink Packet RMS Gateway on Debian
 - Monitor with DisplayPort (Used during setup)
 
 # Software Used
-- Debian 12.11 Bookworm
+- Debian 12.11 Bookworm (netinst)
 - Direwolf 1.7
 - LinBPQ 6.0.24.71
 
