@@ -34,7 +34,7 @@ Winlink Packet RMS Gateway on Debian
 
 # Manage RMS Gateway
 - `monitor-services` opens in `tmux`
-  * Exit `tmux` with `Ctrl + B`, followed by `D`
+  * Exit `tmux` with `Ctrl+B`, followed by `D`
 - `stop-services`, and `start-services`
 
 # Notes
