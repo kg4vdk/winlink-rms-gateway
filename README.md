@@ -2,15 +2,15 @@
 Winlink Packet RMS Gateway on Debian
 # Hardware Used
 - Transceiver
-- Digirig + Cable
+- Digirig Lite + Cable
 - Dell Wyse 3040 Thin Client (8GB eMMC Flash / 2GB RAM)
 - Edimax EW-7811Un Wi-Fi Adapter (Ethernet preferred)
 - Monitor with DisplayPort (Used during setup)
 
 # Software Used
-- Debian 12.7 Bookworm
+- Debian 12.11 Bookworm
 - Direwolf 1.7
-- LinBPQ 6.0.24.47
+- LinBPQ 6.0.24.71
 
 # Debian Install
 - ***Ensure Digirig is disconnected while installing!***
