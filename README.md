@@ -51,8 +51,8 @@ Winlink Packet RMS Gateway on Debian
 ### Dell Wyse 3040 EFI Fix
 - Reboot into installer (F12 to select boot device)
   * Advanced --> Rescue Mode
-  *  /dev/mmcblk0p2 as root file system
-  * mkdir -p /boot/efi/EFI/BOOT
-  * cp /boot/efi/EFI/debian/grubx64.efi /boot/efi/EFI/BOOT/BOOTX64.EFI
-  * CTL+D to exit shell
+  * Select `/dev/mmcblk0p2` as root file system
+  * `mkdir -p /boot/efi/EFI/BOOT`
+  * `cp /boot/efi/EFI/debian/grubx64.efi /boot/efi/EFI/BOOT/BOOTX64.EFI`
+  * `CTL+D` to exit shell
   * Reboot the system (remove the installer USB)
