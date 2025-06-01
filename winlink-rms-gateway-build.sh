@@ -35,11 +35,11 @@ sudo loginctl enable-linger $USER
 #########################
 
 # Digirig udev rule (creates /dev/digirig --> /dev/ttyUSBN)
-cat <<EOF > /tmp/digirig.rules
-SUBSYSTEM=="tty", GROUP="dialout", MODE="0660", ATTRS{product}=="CP2102N USB to UART Bridge Controller", SYMLINK+="digirig"
-EOF
-sudo cp /tmp/digirig.rules /etc/udev/rules.d/digirig.rules
-rm /tmp/digirig.rules
+#cat <<EOF > /tmp/digirig.rules
+#SUBSYSTEM=="tty", GROUP="dialout", MODE="0660", ATTRS{product}=="CP2102N USB to UART Bridge Controller", SYMLINK+="digirig"
+#EOF
+#sudo cp /tmp/digirig.rules /etc/udev/rules.d/digirig.rules
+#rm /tmp/digirig.rules
 
 #########################
 
@@ -102,7 +102,8 @@ cat <<EOF > $HOME/DIREWOLF/direwolf.conf
 MYCALL $CALLSIGN-$DW_SSID
 ADEVICE digirig-rx digirig-tx
 TXDELAY 50
-PTT /dev/digirig RTS
+#PTT /dev/digirig RTS
+PTT CM108
 EOF
 
 cat <<EOF > $HOME/DIREWOLF/start-direwolf.sh
